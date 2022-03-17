@@ -26,7 +26,7 @@
 version = "1.0.4"
 
 project.extra["PluginName"] = "has-smither"
-project.extra["PluginDescription"] = "harastwon - smiths item of choice at varrock smithery"
+project.extra["PluginDescription"] = "mhamil32"
 
 dependencies {
     compileOnly(group = "com.openosrs.externals", name = "iutils", version = "4.7.5+");

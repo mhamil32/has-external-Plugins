@@ -1,25 +1,33 @@
 package net.runelite.client.plugins.hasSmither;
 
-import net.runelite.api.ItemID;
-import lombok.Getter;
+import javax.inject.Inject;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.OverlayManager;
 
-@Getter
-public enum barTypes {
-    BRONZE_BAR("BRONZE BAR", ItemID.BRONZE_BAR),
-    IRON_BAR("IRON BAR", ItemID.IRON_BAR),
-    SILVER_BAR("SILVER BAR", ItemID.SILVER_BAR),
-    STEEL_BAR("Steel Bar", ItemID.STEEL_BAR),
-    GOLD_BAR("Gold Bar", ItemID.GOLD_BAR),
-    MITHRIL_BAR("Mithril Bar", ItemID.MITHRIL_BAR),
-    ADAMANTITE_BAR("Adamant Bar", ItemID.ADAMANTITE_BAR),
-    RUNITE_BAR("Rune Bar", ItemID.RUNITE_BAR);
+@PluginDescriptor(
+		name = "Magic Secateurs",
+		description = "Highlight when magic secateurs aren't equipped on a farming run",
+		tags = {"overlay", "skilling"}
+)
 
-    private final String name;
-    private final int id;
+public class MagicSecateursPlugin extends Plugin
+{
+	@Inject
+	private MagicSecateursOverlay overlay;
 
-    barTypes(String name, int id)
-    {
-        this.name = name;
-        this.id = id;
-    }
+	@Inject
+	private OverlayManager overlayManager;
+
+	@Override
+	public void startUp()
+	{
+		overlayManager.add(overlay);
+	}
+
+	@Override
+	public void shutDown()
+	{
+		overlayManager.remove(overlay);
+	}
 }

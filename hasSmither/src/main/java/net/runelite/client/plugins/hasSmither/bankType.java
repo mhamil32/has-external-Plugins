@@ -1,4 +1,4 @@
-package com.magicsecateurs;
+package net.runelite.client.plugins.hasSmither;
 
 import java.awt.*;
 import java.awt.Dimension;
